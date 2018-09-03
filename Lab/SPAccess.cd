@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="SPAccess.ViewModel.Account">
+    <Position X="2.75" Y="9" Width="2.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="SPAccess.ViewModel.Group">
+    <Position X="7.75" Y="9" Width="2.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="SPAccess.ViewModel.Permission">
+    <Position X="10.75" Y="9" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="SPAccess.ViewModel.Session">
+    <Position X="5.75" Y="9" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="SPAccess.ViewModel.SPModel">
+    <Position X="6" Y="7.75" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="SPAccess._SPManager">
+    <Position X="6" Y="0.5" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="SPAccess.AccountManager">
+    <Position X="2.75" Y="1.75" Width="3.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="SPAccess.PermissionManager">
+    <Position X="6.25" Y="1.75" Width="3" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="SPAccess.SessionManager">
+    <Position X="11.75" Y="1.75" Width="3.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="SPAccess.ConfigurationManager">
+    <Position X="9.5" Y="1.75" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="SPAccess.ForWebAppMVC.CookieManager">
+    <Position X="6" Y="5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="SPAccess.ForWebAppMVC.SPContext">
+    <Position X="8.25" Y="4.5" Width="2.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="SPAccess.ForWebAppMVC.API.ApiPermissionAttribute">
+    <Position X="11" Y="6.5" Width="3" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="SPAccess.ForWebAppMVC.MVC.PermissionAttribute">
+    <Position X="11" Y="4" Width="2.75" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SPAccess.SPAccess">
+    <Position X="2.25" Y="5" Width="3.25" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

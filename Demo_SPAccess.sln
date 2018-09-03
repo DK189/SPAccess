@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo_SPAccess", "Demo_SPAccess\Demo_SPAccess.csproj", "{3DAA0053-EF52-4DBF-92C1-81F38E772BE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo_SPAccess.Tests", "Demo_SPAccess.Tests\Demo_SPAccess.Tests.csproj", "{4F105F97-C4BB-48A1-BB6F-B70987ABA7FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPAccess", "SPAccess\SPAccess.csproj", "{5535F149-C354-4EE4-9DFE-7FAEA819BE10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab", "Lab\Lab.csproj", "{F278BECF-DDD6-4E3E-AACF-06910EB6386D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPAccess.ForWebAppMVC", "SPAccess.ForWebAppMVC\SPAccess.ForWebAppMVC.csproj", "{37D71B27-7A9F-4B8C-98B8-4B1E60A713E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPCore", "SPCore\SPCore.csproj", "{1F1B89BA-A6A2-4998-BCD4-FDDB0B9CC294}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3DAA0053-EF52-4DBF-92C1-81F38E772BE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DAA0053-EF52-4DBF-92C1-81F38E772BE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DAA0053-EF52-4DBF-92C1-81F38E772BE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DAA0053-EF52-4DBF-92C1-81F38E772BE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F105F97-C4BB-48A1-BB6F-B70987ABA7FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F105F97-C4BB-48A1-BB6F-B70987ABA7FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F105F97-C4BB-48A1-BB6F-B70987ABA7FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F105F97-C4BB-48A1-BB6F-B70987ABA7FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5535F149-C354-4EE4-9DFE-7FAEA819BE10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5535F149-C354-4EE4-9DFE-7FAEA819BE10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5535F149-C354-4EE4-9DFE-7FAEA819BE10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5535F149-C354-4EE4-9DFE-7FAEA819BE10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F278BECF-DDD6-4E3E-AACF-06910EB6386D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F278BECF-DDD6-4E3E-AACF-06910EB6386D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F278BECF-DDD6-4E3E-AACF-06910EB6386D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F278BECF-DDD6-4E3E-AACF-06910EB6386D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37D71B27-7A9F-4B8C-98B8-4B1E60A713E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37D71B27-7A9F-4B8C-98B8-4B1E60A713E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37D71B27-7A9F-4B8C-98B8-4B1E60A713E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37D71B27-7A9F-4B8C-98B8-4B1E60A713E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F1B89BA-A6A2-4998-BCD4-FDDB0B9CC294}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F1B89BA-A6A2-4998-BCD4-FDDB0B9CC294}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F1B89BA-A6A2-4998-BCD4-FDDB0B9CC294}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F1B89BA-A6A2-4998-BCD4-FDDB0B9CC294}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
