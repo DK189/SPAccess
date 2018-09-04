@@ -19,6 +19,7 @@ namespace SPAccess
         {
             this.PermissionIdentity = new HashSet<PermissionIdentity>();
             this.UserIdentity = new HashSet<UserIdentity>();
+            this.GroupInformation = new HashSet<GroupInformation>();
         }
     
         public int GroupID { get; set; }
@@ -30,5 +31,7 @@ namespace SPAccess
         public virtual ICollection<PermissionIdentity> PermissionIdentity { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserIdentity> UserIdentity { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GroupInformation> GroupInformation { get; set; }
     }
 }

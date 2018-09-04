@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SPAccess.ViewModel;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Lab
 {
@@ -27,6 +29,11 @@ namespace Lab
             SPAccess = new SPAccess.SPAccess();
 
             acc = SPAccess.AccountManager.GetAccount(2);
+
+            var ms = new MemoryStream();
+            var bf = new BinaryFormatter();
+            bf.Serialize(ms, "Kakaka");
+            byte[] bytes = ms.GetBuffer();
         }
 
         private void ButtonTest_Click(object sender, EventArgs e)

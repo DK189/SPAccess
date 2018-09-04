@@ -57,7 +57,13 @@
     <Compile Include="GroupIdentity.cs">
       <DependentUpon>SPAccessDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="GroupInformation.cs">
+      <DependentUpon>SPAccessDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="PermissionIdentity.cs">
+      <DependentUpon>SPAccessDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PermissionInformation.cs">
       <DependentUpon>SPAccessDB.tt</DependentUpon>
     </Compile>
     <Compile Include="PermissionManager.cs" />
@@ -82,6 +88,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SPAccessDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="UserInformation.cs">
+      <DependentUpon>SPAccessDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\Permission.cs" />
     <Compile Include="ViewModel\SPModel.cs" />

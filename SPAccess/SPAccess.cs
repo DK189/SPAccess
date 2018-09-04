@@ -63,7 +63,10 @@ namespace SPAccess
         {
             try
             {
-                var CreateIfNotExists = DB.Database.CreateIfNotExists();
+                if (!DB.Database.Exists())
+                {
+                    var CreateIfNotExists = DB.Database.CreateIfNotExists();
+                }
             }
             catch (Exception ex)
             {

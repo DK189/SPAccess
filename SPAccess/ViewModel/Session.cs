@@ -42,5 +42,16 @@ namespace SPAccess.ViewModel
                 return account;
             }
         }
+
+        internal override string GetMeta(string Name)
+        {
+            // This model not have meta
+            return null;
+        }
+
+        internal override void SetMeta(string Name, string rawValue)
+        {
+            // This model not have meta
+        }
     }
 }

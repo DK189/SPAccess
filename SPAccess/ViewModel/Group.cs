@@ -52,5 +52,37 @@ namespace SPAccess.ViewModel
         {
             return groupIdentity.PermissionIdentity.Any(p => p.Name == permissionName);
         }
+
+        internal override string GetMeta(string Name)
+        {
+            if (SPAccess.DB.GroupInformation.Any(inf => inf.GroupID == groupIdentity.GroupID && inf.Name == Name))
+            {
+                return SPAccess.DB.GroupInformation.Where(inf => inf.GroupID == groupIdentity.GroupID && inf.Name == Name).Select(infor => infor.Value).FirstOrDefault();
+            }
+            return null;
+        }
+
+        internal override void SetMeta(string Name, string rawValue)
+        {
+            if (SPAccess.DB.GroupInformation.Any(inf => inf.GroupID == groupIdentity.GroupID && inf.Name == Name))
+            {
+                var infor = SPAccess.DB.GroupInformation.First(inf => inf.GroupID == groupIdentity.GroupID && inf.Name == Name);
+                infor.Value = rawValue;
+                infor.UpdateTime = DateTime.Now;
+
+                SPAccess.DB.SaveChanges();
+            }
+            else
+            {
+                var infor = SPAccess.DB.GroupInformation.Create();
+                infor.GroupID = groupIdentity.GroupID;
+                infor.Name = Name;
+                infor.Value = rawValue;
+                infor.UpdateTime = DateTime.Now;
+
+                SPAccess.DB.GroupInformation.Add(infor);
+                SPAccess.DB.SaveChanges();
+            }
+        }
     }
 }

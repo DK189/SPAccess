@@ -14,6 +14,12 @@
         <AssociationConnector Association="SPAccessDBModel.GroupPermissionAllow" ManuallyRouted="false" />
         <AssociationConnector Association="SPAccessDBModel.UserInGroup" ManuallyRouted="false" />
         <AssociationConnector Association="SPAccessDBModel.UserPermissionDeny" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SPAccessDBModel.GroupInformation" Width="1.5" PointX="3" PointY="5.25" />
+        <EntityTypeShape EntityType="SPAccessDBModel.PermissionInformation" Width="1.5" PointX="5.25" PointY="4.375" />
+        <EntityTypeShape EntityType="SPAccessDBModel.UserInformation" Width="1.5" PointX="7.5" PointY="4.25" />
+        <AssociationConnector Association="SPAccessDBModel.FK_GroupInformation_GroupIdentity" />
+        <AssociationConnector Association="SPAccessDBModel.FK_PermissionInformation_PermissionIdentity" />
+        <AssociationConnector Association="SPAccessDBModel.FK_UserInformation_UserIdentity" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

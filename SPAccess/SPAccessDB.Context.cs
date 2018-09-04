@@ -30,5 +30,8 @@ namespace SPAccess
         public virtual DbSet<Session> Session { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<UserIdentity> UserIdentity { get; set; }
+        public virtual DbSet<GroupInformation> GroupInformation { get; set; }
+        public virtual DbSet<PermissionInformation> PermissionInformation { get; set; }
+        public virtual DbSet<UserInformation> UserInformation { get; set; }
     }
 }

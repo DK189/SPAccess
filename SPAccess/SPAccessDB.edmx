@@ -14,6 +14,16 @@
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="UpdateTime" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="GroupInformation">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="GroupPermissionAllow">
           <Key>
             <PropertyRef Name="GroupID" />
@@ -30,6 +40,16 @@
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Title" Type="nvarchar(max)" />
           <Property Name="Require" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PermissionInformation">
+          <Key>
+            <PropertyRef Name="PermissionID" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="PermissionID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Session">
           <Key>
@@ -60,6 +80,16 @@
           <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
           <Property Name="UpdateTime" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="UserInformation">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="UserInGroup">
           <Key>
             <PropertyRef Name="UserID" />
@@ -76,6 +106,18 @@
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="PermissionID" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_GroupInformation_GroupIdentity">
+          <End Role="GroupIdentity" Type="Self.GroupIdentity" Multiplicity="1" />
+          <End Role="GroupInformation" Type="Self.GroupInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupIdentity">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="GroupInformation">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_GroupPermissionAllow_GroupIdentity">
           <End Role="GroupIdentity" Type="Self.GroupIdentity" Multiplicity="1" />
           <End Role="GroupPermissionAllow" Type="Self.GroupPermissionAllow" Multiplicity="*" />
@@ -100,6 +142,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PermissionInformation_PermissionIdentity">
+          <End Role="PermissionIdentity" Type="Self.PermissionIdentity" Multiplicity="1" />
+          <End Role="PermissionInformation" Type="Self.PermissionInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PermissionIdentity">
+              <PropertyRef Name="PermissionID" />
+            </Principal>
+            <Dependent Role="PermissionInformation">
+              <PropertyRef Name="PermissionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Session_UserIdentity">
           <End Role="UserIdentity" Type="Self.UserIdentity" Multiplicity="1" />
           <End Role="Session" Type="Self.Session" Multiplicity="*" />
@@ -108,6 +162,18 @@
               <PropertyRef Name="UserID" />
             </Principal>
             <Dependent Role="Session">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInformation_UserIdentity">
+          <End Role="UserIdentity" Type="Self.UserIdentity" Multiplicity="1" />
+          <End Role="UserInformation" Type="Self.UserInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserIdentity">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserInformation">
               <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
@@ -162,13 +228,20 @@
         </Association>
         <EntityContainer Name="SPAccessDBModelStoreContainer">
           <EntitySet Name="GroupIdentity" EntityType="Self.GroupIdentity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupInformation" EntityType="Self.GroupInformation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GroupPermissionAllow" EntityType="Self.GroupPermissionAllow" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PermissionIdentity" EntityType="Self.PermissionIdentity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PermissionInformation" EntityType="Self.PermissionInformation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Session" EntityType="Self.Session" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserIdentity" EntityType="Self.UserIdentity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInformation" EntityType="Self.UserInformation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInGroup" EntityType="Self.UserInGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserPermissionDeny" EntityType="Self.UserPermissionDeny" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_GroupInformation_GroupIdentity" Association="Self.FK_GroupInformation_GroupIdentity">
+            <End Role="GroupIdentity" EntitySet="GroupIdentity" />
+            <End Role="GroupInformation" EntitySet="GroupInformation" />
+          </AssociationSet>
           <AssociationSet Name="FK_GroupPermissionAllow_GroupIdentity" Association="Self.FK_GroupPermissionAllow_GroupIdentity">
             <End Role="GroupIdentity" EntitySet="GroupIdentity" />
             <End Role="GroupPermissionAllow" EntitySet="GroupPermissionAllow" />
@@ -177,9 +250,17 @@
             <End Role="PermissionIdentity" EntitySet="PermissionIdentity" />
             <End Role="GroupPermissionAllow" EntitySet="GroupPermissionAllow" />
           </AssociationSet>
+          <AssociationSet Name="FK_PermissionInformation_PermissionIdentity" Association="Self.FK_PermissionInformation_PermissionIdentity">
+            <End Role="PermissionIdentity" EntitySet="PermissionIdentity" />
+            <End Role="PermissionInformation" EntitySet="PermissionInformation" />
+          </AssociationSet>
           <AssociationSet Name="FK_Session_UserIdentity" Association="Self.FK_Session_UserIdentity">
             <End Role="UserIdentity" EntitySet="UserIdentity" />
             <End Role="Session" EntitySet="Session" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInformation_UserIdentity" Association="Self.FK_UserInformation_UserIdentity">
+            <End Role="UserIdentity" EntitySet="UserIdentity" />
+            <End Role="UserInformation" EntitySet="UserInformation" />
           </AssociationSet>
           <AssociationSet Name="FK_UserInGroup_GroupIdentity" Association="Self.FK_UserInGroup_GroupIdentity">
             <End Role="GroupIdentity" EntitySet="GroupIdentity" />
@@ -212,6 +293,7 @@
           <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="PermissionIdentity" Relationship="Self.GroupPermissionAllow" FromRole="GroupIdentity" ToRole="PermissionIdentity" />
           <NavigationProperty Name="UserIdentity" Relationship="Self.UserInGroup" FromRole="GroupIdentity" ToRole="UserIdentity" />
+          <NavigationProperty Name="GroupInformation" Relationship="SPAccessDBModel.FK_GroupInformation_GroupIdentity" FromRole="GroupIdentity" ToRole="GroupInformation" />
         </EntityType>
         <EntityType Name="PermissionIdentity">
           <Key>
@@ -223,6 +305,7 @@
           <NavigationProperty Name="GroupIdentity" Relationship="Self.GroupPermissionAllow" FromRole="PermissionIdentity" ToRole="GroupIdentity" />
           <NavigationProperty Name="UserIdentity" Relationship="Self.UserPermissionDeny" FromRole="PermissionIdentity" ToRole="UserIdentity" />
           <Property Name="Require" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PermissionInformation" Relationship="SPAccessDBModel.FK_PermissionInformation_PermissionIdentity" FromRole="PermissionIdentity" ToRole="PermissionInformation" />
         </EntityType>
         <EntityType Name="Session">
           <Key>
@@ -256,6 +339,7 @@
           <NavigationProperty Name="Session" Relationship="Self.FK_Session_UserIdentity" FromRole="UserIdentity" ToRole="Session" />
           <NavigationProperty Name="GroupIdentity" Relationship="Self.UserInGroup" FromRole="UserIdentity" ToRole="GroupIdentity" />
           <NavigationProperty Name="PermissionIdentity" Relationship="Self.UserPermissionDeny" FromRole="UserIdentity" ToRole="PermissionIdentity" />
+          <NavigationProperty Name="UserInformation" Relationship="SPAccessDBModel.FK_UserInformation_UserIdentity" FromRole="UserIdentity" ToRole="UserInformation" />
         </EntityType>
         <Association Name="FK_Session_UserIdentity">
           <End Role="UserIdentity" Type="Self.UserIdentity" Multiplicity="1" />
@@ -303,7 +387,91 @@
             <End Role="PermissionIdentity" EntitySet="PermissionIdentity" />
             <End Role="UserIdentity" EntitySet="UserIdentity" />
           </AssociationSet>
+          <EntitySet Name="GroupInformation" EntityType="SPAccessDBModel.GroupInformation" />
+          <EntitySet Name="PermissionInformation" EntityType="SPAccessDBModel.PermissionInformation" />
+          <EntitySet Name="UserInformation" EntityType="SPAccessDBModel.UserInformation" />
+          <AssociationSet Name="FK_GroupInformation_GroupIdentity" Association="SPAccessDBModel.FK_GroupInformation_GroupIdentity">
+            <End Role="GroupIdentity" EntitySet="GroupIdentity" />
+            <End Role="GroupInformation" EntitySet="GroupInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PermissionInformation_PermissionIdentity" Association="SPAccessDBModel.FK_PermissionInformation_PermissionIdentity">
+            <End Role="PermissionIdentity" EntitySet="PermissionIdentity" />
+            <End Role="PermissionInformation" EntitySet="PermissionInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInformation_UserIdentity" Association="SPAccessDBModel.FK_UserInformation_UserIdentity">
+            <End Role="UserIdentity" EntitySet="UserIdentity" />
+            <End Role="UserInformation" EntitySet="UserInformation" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="GroupInformation">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="GroupIdentity" Relationship="SPAccessDBModel.FK_GroupInformation_GroupIdentity" FromRole="GroupInformation" ToRole="GroupIdentity" />
+        </EntityType>
+        <EntityType Name="PermissionInformation">
+          <Key>
+            <PropertyRef Name="PermissionID" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="PermissionID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="PermissionIdentity" Relationship="SPAccessDBModel.FK_PermissionInformation_PermissionIdentity" FromRole="PermissionInformation" ToRole="PermissionIdentity" />
+        </EntityType>
+        <EntityType Name="UserInformation">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="UserIdentity" Relationship="SPAccessDBModel.FK_UserInformation_UserIdentity" FromRole="UserInformation" ToRole="UserIdentity" />
+        </EntityType>
+        <Association Name="FK_GroupInformation_GroupIdentity">
+          <End Type="SPAccessDBModel.GroupIdentity" Role="GroupIdentity" Multiplicity="1" />
+          <End Type="SPAccessDBModel.GroupInformation" Role="GroupInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupIdentity">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="GroupInformation">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PermissionInformation_PermissionIdentity">
+          <End Type="SPAccessDBModel.PermissionIdentity" Role="PermissionIdentity" Multiplicity="1" />
+          <End Type="SPAccessDBModel.PermissionInformation" Role="PermissionInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PermissionIdentity">
+              <PropertyRef Name="PermissionID" />
+            </Principal>
+            <Dependent Role="PermissionInformation">
+              <PropertyRef Name="PermissionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInformation_UserIdentity">
+          <End Type="SPAccessDBModel.UserIdentity" Role="UserIdentity" Multiplicity="1" />
+          <End Type="SPAccessDBModel.UserInformation" Role="UserInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserIdentity">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserInformation">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -386,6 +554,36 @@
               <ScalarProperty Name="UserID" ColumnName="UserID" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="GroupInformation">
+            <EntityTypeMapping TypeName="SPAccessDBModel.GroupInformation">
+              <MappingFragment StoreEntitySet="GroupInformation">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PermissionInformation">
+            <EntityTypeMapping TypeName="SPAccessDBModel.PermissionInformation">
+              <MappingFragment StoreEntitySet="PermissionInformation">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInformation">
+            <EntityTypeMapping TypeName="SPAccessDBModel.UserInformation">
+              <MappingFragment StoreEntitySet="UserInformation">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
